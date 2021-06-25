@@ -6,10 +6,10 @@
 </head>
 <body>
     <h1>This is a Person List</h1>
-    <ul>
     {% for person in list  %}
-        <li>{{person.name}} -- {{person.age}}</li>
+        {{person.id}}: {{person.name}} -- {{person.age}}<br>
     {% endfor %}
-    </ul>
+    
+    <a href="/">goto the HOME page</a>
 </body>
 </html>

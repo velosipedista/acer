@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from db.models import Person
 
 def enter(req):
@@ -13,3 +13,37 @@ def show_list(req):
         'list' : Person.objects.all(),
     }
     return render(req, 'list.html', context)
+
+def query_person_by_name(req):
+    print(Person.objects.filter(name=req.POST['name']))
+    context = {
+        'persons': Person.objects.filter(name=req.POST['name'])
+    }
+    return render(req, 'show_person.html', context)
+
+def query_person_by_age(req):
+    print(req.POST)
+    print(Person.objects.filter(age=req.POST['age']))
+    context = {
+        'persons': Person.objects.filter(age=req.POST['age'])
+    }
+    return render(req, 'show_person.html', context)
+
+def query_person_by_id(req):
+    print(req.POST)
+    print(Person.objects.filter(id=req.POST['id']))
+    context = {
+        'persons': Person.objects.filter(id=req.POST['id'])
+    }
+    return render(req, 'show_person.html', context)
+
+def edit_person(req, pk):
+    context = {
+        'person': Person.objects.get(pk=pk)
+    }
+    return render(req, 'edit_person.html', context)
+
+def apply(req, pk):
+    person = Person(id=pk, name=req.POST['new_name'], age=req.POST['new_age'])
+    person.save()
+    return redirect('/')

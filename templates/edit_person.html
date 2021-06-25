@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Person</title>
+</head>
+<body>
+    <h4>{{person.id}}</h4>
+    <h4>{{person.name}} -- {{person.age}}</h4>
+    <form method="POST" action="../apply/{{person.id}}">
+        {% csrf_token %}
+        <label for="new_name">New Name</label>
+        <input type="text" name="new_name"/>
+        <label for="new_age">New Age</label>
+        <input type="number" name="new_age"/>
+        <button>Apply</button>
+    </form>
+</body>
+</html>

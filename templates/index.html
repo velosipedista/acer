@@ -10,7 +10,22 @@
         <input type="submit" value="Create Person"/>
     </form><br><br>
     <form action="db/list/">
-        <button>View List</button>
+        <button>View Full List</button>
+    </form><br><br>
+    <form action="db/query_by_name/" method="POST">
+        {% csrf_token %}
+        <input type="text" name="name">
+        <input type="submit" value="query by name">
+    </form><br>
+    <form action="db/query_by_age/" method="POST">
+        {% csrf_token %}
+        <input type="number" name="age">
+        <input type="submit" value="query by age">
+    </form><br>
+    <form action="db/query_by_id/" method="POST">
+        {% csrf_token %}
+        <input type="number" name="id">
+        <input type="submit" value="query by ID">
     </form>
 
 </body>

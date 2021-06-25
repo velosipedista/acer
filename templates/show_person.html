@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show the Person</title>
+</head>
+<body>
+    <ol>
+        {% if persons %}
+            {% for person in persons %}
+            <p>ID {{person.id}}</p>
+            <form method="POST" action="../edit_person/{{person.id}}">
+                {% csrf_token %}
+                <li> : {{person.name}} -- {{person.age}}</li>
+                <button>Edit</button>
+            </form>
+            {% endfor %}
+        {% else %}
+            <h4>No Such a Person</h4>
+        {% endif %}
+    </ol>
+    <a href="/">go to the main page</a>
+</body>
+</html>
